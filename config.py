@@ -14,11 +14,11 @@ class Config(object):
 	Database Connection
 	"""
 	# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@103.165.42.254/ramadani'
-	SQLALCHEMY_DATABASE_URI = os.environ.get('URL_DATABASE')
+	SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@localhost/ramadani'
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	
 	BOOTSTRAP_FONTAWESOME = True
-	SECRET_KEY = os.environ.get('SECRET_KEY')
+	SECRET_KEY = 'AFSBAKFBAKBFAK09876543TNJQN!$@y(!$yGABV'
 	CSRF_ENABLED = True
  
 	CKEDITOR_SERVE_LOCAL = True
