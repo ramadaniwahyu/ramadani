@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, send_from_directory
+from dotenv import load_dotenv , dotenv_values
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_required
 from flask_migrate import Migrate
@@ -7,6 +8,7 @@ from flask_ckeditor import CKEditor
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -14,6 +16,8 @@ app = Flask(__name__)
 #app.config.from_object('config.ProductionConfig')
 app.config.from_object('config.DevelopmentConfig')
 #app.config.from_object('config.TestingConfig')
+config = dotenv_values()
+app.config.from_mapping(config)
 
 Bootstrap(app)
 db.init_app(app)
