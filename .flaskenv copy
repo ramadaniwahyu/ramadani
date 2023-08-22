@@ -1,0 +1,8 @@
+FLASK_ENV=production
+
+FLASK_DEBUG=_set_0_or_1
+
+FLASK_RUN_PORT=5set_port
+
+URL_DATABASE=url_to_database
+SECRET_KEY=set_secret_key

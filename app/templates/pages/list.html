@@ -1,0 +1,69 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base_admin.html" %}
+
+{% block styles %}
+{% endblock styles %}
+    
+{% block breadcrumbs %}
+<ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i> Beranda Administrator</a></li>
+    <li class="breadcrumb-item active"><i class="fas fa-file-contract"></i> {{ title }}</li>
+</ol>
+{% endblock breadcrumbs %}
+
+{% block contents %}
+{{ utils.flashed_messages(dismissible=True) }}
+<div class="card">
+    <div class="card-header text-right">
+        <a type="button" class="btn bg-teal waves-effect m-r-20" href="{{ url_for('posts.add') }}">Tambah</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myData" class="table table-bordered table-striped table-hover">
+                <thead class=>
+                    <tr>
+                        <th width=5%>No</th>
+                        <th>Judul</th>
+                        <th>Kategori</th>
+                        <th width=20%%>Oleh</th>
+                        <th width=15%%></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for no, post in data %}
+                    <tr>
+                        <td>
+                            {{ no }} 
+                        </td>
+                        <td>
+                            {{ post.title }} 
+                        </td>
+                        <td>
+                            {{ post.category }} 
+                        </td>
+                        <td>
+                            {% if (post.user) %}
+                            {{ post.user }}
+                            {% else %}
+                            --
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-app" href="{{ url_for('posts.edit', id=post.id) }}"><i data-toggle="tooltip" data-placement="top" title="Edit" class="fas fa-edit text-info"></i> </a>
+                            <a class="btn btn-app" href="{{ url_for('posts.delete', id=post.id) }}" onclick="return confirm('Yakin menghapus data ini?');"><i data-toggle="tooltip" data-placement="top" title="Hapus" class="fas fa-trash text-danger"></i> </a>
+                        </td>
+                    </tr>
+                    {% endfor %}       
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock contents %}
+
+{% block modals %}
+{% endblock modals %}
+
+{% block scripts %}
+{% endblock scripts %}

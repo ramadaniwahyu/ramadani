@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{% endblock styles %}
+    
+{% block headers %}
+<header class="header">
+    <div class="fw">
+        <div class="logo">
+            <a href="#">Ramadani.My.Id</a>
+        </div>
+        <a href="#" class="menu-btn"><span></span></a>
+        <div class="top-menu">
+            <ul>
+                <li><a href="/blog">Back to Blog</a></li>
+            </ul>
+            <a href="#" class="close"></a>
+        </div>
+    </div>
+</header>
+{% endblock headers %}
+
+{% block contents %}
+<div class="container">
+
+	<!-- Section Started -->
+	<div class="section started-blog">
+		<div id="particles-bg" class="slide" style="background-image: url({{url_for('serveStaticResource', resource='public/img/bg-1.jpg')}});"></div>
+	</div>
+
+    <!-- Section Blog -->
+    <div class="section blog-single align-left" id="blog-section">
+        <div class="fw">
+            <div class="row">
+                <div class="col col-m-12 col-t-12 col-d-12">
+                    
+                    <div class="post-box">
+
+                        <h1>{{post.title}}</h1>						
+                        <div class="blog-detail">Posted <span>{{post.dibuat_pada.strftime("%d %b, %Y")}}</span></div>
+
+                        <div class="blog-image">
+                            {% if post.image %}
+                            <img src="{{url_for('serveStaticResource', resource='img/post.image')}}" alt="{{post.title}}">
+                            {% else %}
+                            <img src="{{url_for('serveStaticResource', resource='img/img-default.jpg')}}" alt="No Image">
+                            {% endif %}
+                        </div>  
+
+                        <div class="blog-content">
+                            {{post.content|safe}} 
+                        </div>
+
+                        <form id="blog-form" class="contact-form" method="post">
+                            <h3 class="subtitle">Leave a Reply</h3>
+                            <div class="row">
+                                <div class="col col-m-12 col-t-12 col-d-6">
+                                    <div class="group-val">
+                                        <input type="text" name="name" placeholder="Your Name" />
+                                    </div>
+                                    <div class="group-val">
+                                        <input type="text" name="email" placeholder="Your Email" />
+                                    </div>
+                                    <div class="group-val ct-gr">
+                                        <textarea name="message" placeholder="Message"></textarea>
+                                    </div>
+                                    <a href="#" class="btn btn_animated" onclick="$('#blog-form').submit(); return false;"><span class="circle">Send Message</span></a>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="alert-success">
+                            <p>Thanks, your message is sent successfully. We will contact you shortly!</p>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h3 class="subtitle">Post Comments</h3>
+                            <ul class="post-comment">
+                                {% if post.comments %}
+                                {% for comment in post.comments%}
+                                <li>
+                                    <div class="comment-info">
+                                        <div class="name">
+                                            <h3>{{comment.name}}</h3>
+                                            <span>{{ comment.dibuat_pada.strftime("%d %b, %Y at %H.%M")}}</span>
+                                        </div>
+                                        <p>{{comment.content}}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                No comments yet!
+                                {% endif %}
+                            </ul>
+                        </div>
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+	 <!-- Footer -->
+	 <footer class="align-center">
+		<div class="socials">
+
+		</div>
+		<div class="copy">© 2023 D. Wahyu Ramadani. all rights reserved.</div>
+	</footer>
+	
+</div>
+{% endblock contents %}
+
+{% block scripts %}
+{% endblock scripts %}

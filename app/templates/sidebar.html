@@ -1,0 +1,50 @@
+{% block sidebar %}
+    <!-- partial:../../partials/_sidebar.html -->
+    <aside class="mdc-persistent-drawer mdc-persistent-drawer--open">
+        <nav class="mdc-persistent-drawer__drawer">
+          <div class="mdc-persistent-drawer__toolbar-spacer">
+            <a href="/admin" class="brand-logo">
+              <img src="{{ url_for('serveStaticResource', resource='images/favico.png')}}" alt="logo"> Ramadani.My.Id
+            </a>
+          </div>
+          <div class="mdc-list-group">
+            <nav class="mdc-list mdc-drawer-menu">
+              <div class="mdc-list-item mdc-drawer-item">
+                <a class="mdc-drawer-link" href="/admin">
+                  <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">desktop_mac</i>
+                  Beranda
+                </a>
+              </div>
+              <div class="mdc-list-item mdc-drawer-item">
+                <a class="mdc-drawer-link" href="/admin/post">
+                  <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
+                  Post
+                </a>
+              </div>
+              <div class="mdc-list-item mdc-drawer-item" href="#" data-toggle="expansionPanel" target-panel="ui-sub-menu">
+                <a class="mdc-drawer-link" href="#">
+                  <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                  Pengaturan
+                  <i class="mdc-drawer-arrow material-icons">arrow_drop_down</i>
+                </a>
+                <div class="mdc-expansion-panel" id="ui-sub-menu">
+                  <nav class="mdc-list mdc-drawer-submenu">
+                    <div class="mdc-list-item mdc-drawer-item">
+                      <a class="mdc-drawer-link" href="../../pages/ui-features/buttons.html">
+                        Pengguna
+                      </a>
+                    </div>
+                    <div class="mdc-list-item mdc-drawer-item">
+                      <a class="mdc-drawer-link" href="../../pages/ui-features/typography.html">
+                        Konfigurasi
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </nav>
+      </aside>
+
+{% endblock sidebar %}

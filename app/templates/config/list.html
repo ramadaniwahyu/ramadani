@@ -1,0 +1,85 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base_admin.html" %}
+
+{% block styles %}
+{% endblock styles %}
+    
+{% block breadcrumbs %}
+<ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-tachometer-alt"></i> Beranda Administrator</a></li>
+    <li class="breadcrumb-item active"><i class="fas fa-cogs"></i> {{ title }}</a></li>
+</ol>
+{% endblock breadcrumbs %}
+
+{% block contents %}
+{{ utils.flashed_messages(dismissible=True) }}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6 m-auto">
+                {{ wtf.quick_form(form, button_map={'submit1': 'primary'}) }}
+            </div>
+            <div class="col-4 m-auto">
+                <div class="config-item">
+                    <div class="row">
+                        <h5>Pekerjaan </h5>&nbsp;<button type="button" class="btn bg-teal waves-effect m-r-20" data-toggle="modal" data-target="#workModal">Tambah</button>
+                    </div>
+                    <ul>
+                        {% for item in works %}
+                        <li>
+                            <strong>{{ item.name }} - {{item.icon}}</strong> <a href="{{url_for('profile.del_work', id=item.id)}}"> Hapus</a> <br />
+                            <p>{{ item.desc}}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="config-item">
+                    <div class="row">
+                        <h5>Teks Slider </h5>&nbsp;<button type="button" class="btn bg-teal waves-effect m-r-20" data-toggle="modal" data-target="#slideModal">Tambah</button>
+                    </div>
+                    <ul>
+                        {% for item in slides %}
+                        <li>{{item.name}} <a href="{{url_for('profile.del_slide', id=item.id)}}"> Hapus</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contents %}
+
+{% block modals %}
+<div class="modal fade" id="workModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-right">
+                <div class="row">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+             </div>
+            <div class="modal-body">
+                {{ wtf.quick_form(form2, button_map={'submit2': 'primary'}) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="slideModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-right">
+                <div class="row">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+             </div>
+            <div class="modal-body">
+                {{ wtf.quick_form(form3, button_map={'submit3': 'primary'}) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock modals %}
+
+{% block scripts %}
+{% endblock scripts %}

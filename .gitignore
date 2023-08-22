@@ -1,0 +1,8 @@
+env/
+migrations/
+_pycache_
+.vscode/
+.pyc
+./.pyc
+../.pyc
+.flaskenv

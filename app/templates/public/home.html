@@ -1,0 +1,190 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+
+{% block styles %}
+{% endblock styles %}
+    
+{% block headers %}
+<header class="header">
+    <div class="fw">
+        <div class="logo">
+            <a href="/index.html">Ramadani.My.Id</a>
+        </div>
+        <a href="#" class="menu-btn"><span></span></a>
+        <div class="top-menu">
+            <ul>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#services-section">What I Do</a></li>
+                <li><a href="#blog-section">Blog</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>
+            <a href="#" class="close"></a>
+        </div>
+    </div>
+</header>
+{% endblock headers %}
+
+{% block contents %}
+<div class="container">
+    <!-- Section Started -->
+    <div class="section started">
+        <div id="particles-bg" class="slide" style="background-image: url({{url_for('serveStaticResource', resource='public/img/bg-1.jpg')}});"></div>
+        <!--
+            <div id="video-bg" class="slide" data-property="{videoURL:'https://youtu.be/rBoYIDWghZc', containment:'#video-bg', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, addRaster:true, quality:'default', cc_load_policy:false, showYTLogo:false}"></div>
+        -->
+        <div class="centrize full-width">
+            <div class="vertical-center">
+                <div class="st-title align-center">
+                    <div class="typing-title">
+                        {% for item in profile.slides %}
+                        <p>{{item.name}}</p>
+                        {% endfor %}
+                    </div>
+                    <span class="typed-title"></span>
+                </div>
+                <div class="socials">
+                    {{ profile.site_desc }}
+                </div>
+            </div>
+        </div>
+        <a href="#" class="mouse-btn"><i class="icon ion ion-chevron-down"></i></a>
+    </div>
+
+    <!-- Section About -->
+    <div class="section about align-left" id="about-section">
+        <div class="fw">
+            <div class="row">
+                <div class="col col-m-12 col-t-4 col-d-4">
+                    <div class="profile">
+                        <img src="{{ url_for('serveStaticResource', resource='public/img/profile-1.jpg')}}" alt="" />
+                    </div>
+                </div>
+                <div class="col col-m-12 col-t-8 col-d-8">
+                    <div class="text-box">
+                        <h1>I'm {{ profile.profile_name}}, <br />{{ profile.profile_occupation }} <br />based on Kediri, East Java, Indonesia.</h1>
+                        <p>
+                            {{profile.profile_desc}}
+                        </p>
+                    </div>
+                    <div class="bts">
+                        <a target="blank" href="https://s.id/lemme-know" class="btn extra" style="font-size:1rem"><i class="icon ion ion-social-whatsapp-outline"></i>&nbsp;Let me know your idea</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Services -->
+    <div class="section services gray align-left" id="services-section">
+        <div class="fw">
+            <div class="titles">
+                <div class="title">What I Do</div>
+            </div>
+            <div class="row">
+                {% for item in profile.works %}
+                <div class="col col-m-12 col-t-6 col-d-3">
+                    <div class="service-item">
+                        <div class="circle"><i class="icon ion {{ item.icon }}"></i></div>
+                        <div class="name">{{ item.name }}</div>
+                        <p>{{ item.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="section blog align-left gray" id="blog-section">
+        <div class="fw">
+            <div class="titles">
+                <div class="title">Latest Blogs</div>
+            </div>
+            <div class="row blog-items">
+                {% for item in posts %}
+                <div class="col col-m-12 col-t-4 col-d-4">
+                    <div class="blog-item">
+                        <div class="image">
+                            <a href="/blog/{{item.id}}">
+                                {% if item.image %}
+                                <img src="img/{{item.image}}" alt="{{item.title}}" />
+                                {% else %}
+                                <img src="img/img-default.jpg" alt="No Image" />
+                                {% endif %}
+                            </a>
+                        </div>
+                        <a href="/blog/{{item.id}}" class="name">{{item.title}}</a>
+                        <div class="date">{{item.user}} - {{item.dibuat_pada.strftime("%d %b, %Y")}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="bts">
+                <a href="{{ url_for('frontend.post') }}" class="btn extra">View Blog</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!-- Section Contacts -->
+    <div class="section contacts align-left" id="contact-section">
+        <div class="fw">
+            <div class="titles">
+                <div class="title">Contact Me</div>
+            </div>
+            <div class="contact-form">
+                {{ utils.flashed_messages(dismissible=True) }}
+                <form id="cform" action="" method="post" role="post">
+                    {{ form.csrf_token() }}
+                    <div class="row">
+                        <div class="col col-m-12 col-t-6 col-d-6">
+                            <div class="value">
+                                <input type="text" name="name" placeholder="Name *" />
+                            </div>
+                        </div>
+                        <div class="col col-m-12 col-t-6 col-d-6">
+                            <div class="value">
+                                <input type="text" name="phone" placeholder="Phone *" />
+                            </div>
+                        </div>
+                        <div class="col col-m-12 col-t-6 col-d-6">
+                            <div class="value">
+                                <input type="text" name="email" placeholder="Email *" />
+                            </div>
+                        </div>
+                        <div class="col col-m-12 col-t-6 col-d-6">
+                            <div class="value">
+                                <input type="text" name="subject" placeholder="Subject *" />
+                            </div>
+                        </div>
+                        <div class="col col-m-12 col-t-12 col-d-12">
+                            <div class="value">
+                                <textarea name="content" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col col-m-12 col-t-12 col-d-12">
+                            <button id="submit" name="submit" type="submit" class="btn">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+                <!--
+                <div class="alert-success">
+                    <p>Thanks, your message is sent successfully. We will contact you shortly!</p>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="align-center">
+        <div class="socials">
+
+        </div>
+        <div class="copy">© 2023 D. Wahyu Ramadani. all rights reserved.</div>
+    </footer>
+</div>
+{% endblock contents %}
+
+{% block scripts %}
+{% endblock scripts %}
