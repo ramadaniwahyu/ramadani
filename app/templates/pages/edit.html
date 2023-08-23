@@ -22,12 +22,14 @@
                 {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
             </div>
             <div class="col-4 m-auto">
+                {% if not new %}
                 {% if post.image %}
                 <img src="/img/{{ post.image }}" class="p-4" height="300" alt="{{ post.title }}">
                 {% else %}
                 <img src="/img/img-default.jpg" class="p-4" height="300" alt="No Image">
                 {% endif %}
                 {{ wtf.quick_form(form2, button_map={'submit2': 'primary'}) }}
+                {% endif %}
             </div>
         </div>
     </div>

@@ -30,6 +30,7 @@ def list():
 @posts.route('/admin/artikel/<id>', methods=['GET', 'POST'])
 @login_required
 def edit(id):
+    new = False
     post = Page.query.get_or_404(id)
     form = PostForm(obj=post)
     form2 = UploadForm()
@@ -60,11 +61,12 @@ def edit(id):
     form.title.data = post.title
     form.content.data = post.content
     form.category.data = post.category
-    return render_template('pages/edit.html', post=post, form=form, form2=form2,title='Edit Artikel')
+    return render_template('pages/edit.html', post=post, form=form, new=new, form2=form2,title='Edit Artikel')
 
 @posts.route('/admin/artikel/tambah', methods=['GET', 'POST'])
 @login_required
 def add():
+    new = True
     form = PostForm()
     if form.validate_on_submit():
         page = Page(title=form.title.data, content=form.content.data, category=form.category.data, user_id=current_user.id)
@@ -73,7 +75,7 @@ def add():
         
         flash('Artikel telah ditambahkan.')
         return redirect(url_for('posts.list'))
-    return render_template('pages/edit.html', form=form, title='Tambah Artikel')
+    return render_template('pages/edit.html', form=form, new=new, title='Tambah Artikel')
 
 @posts.route('/admin/artikel/<id>/hapus', methods=['GET', 'POST'])
 @login_required
