@@ -8,13 +8,13 @@ class Config(object):
 	DEBUG = True
 	TESTING = False
 	TEMPLATES_AUTO_RELOAD = True
-	PERMANENT_SESSION_LIFETIME = 600
+	PERMANENT_SESSION_LIFETIME = 3600
 	
 	"""
 	Database Connection
 	"""
-	SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@103.165.42.254/ramadani'
-	# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@localhost/ramadani'
+	# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@103.165.42.254/ramadani'
+	SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user123:Q1w2e3r4!!@localhost/ramadani'
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	
 	BOOTSTRAP_FONTAWESOME = True
