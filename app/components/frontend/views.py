@@ -33,7 +33,7 @@ def post_item(id):
     
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(name=form.name.data, email=form.email.data, content=form.content.data, page=post.id)
+        comment = Comment(name=form.name.data, email=form.email.data, content=form.content.data, page_id=post.id)
         db.session.add(comment)
         db.session.commit()
         flash('Komentar telah ditambahkan')

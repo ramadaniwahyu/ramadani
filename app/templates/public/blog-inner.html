@@ -1,3 +1,5 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 
 {% block styles %}
@@ -51,26 +53,41 @@
                             {{post.content|safe}} 
                         </div>
 
-                        <form id="blog-form" class="contact-form" method="post">
+                        <!--
+
+                                                    <form action="" method="post" class="form" role="form">
+                            {{ form.csrf_token() }}
+                            <h3 class="subtitle">Leave a Reply</h3>
+                            <div class="form-group  required">
+                                <input class="form-control" id="name" name="name" required type="text" placeholder="Name" >
+                            </div>
+                            <div class="form-group  required">
+                                <input class="form-control" id="email" name="email" required type="text" placeholder="Your Email" >
+                            </div>
+                            <div class="form-group  required">
+                                <textarea class="form-control" id="content" name="content" required placeholder="Message"></textarea>
+                            </div>
+                            <input class="btn btn_animated btn_submit" id="submit" name="submit" type="submit" value="Send Message">
+                        </form>
+
+                        <form id="blog-form form" class="contact-form form" method="post">
+                            {{ form.csrf_token() }}
                             <h3 class="subtitle">Leave a Reply</h3>
                             <div class="row">
                                 <div class="col col-m-12 col-t-12 col-d-6">
                                     <div class="group-val">
-                                        <input type="text" name="name" placeholder="Your Name" />
+                                        <input type="text" name="name" />
                                     </div>
                                     <div class="group-val">
-                                        <input type="text" name="email" placeholder="Your Email" />
+                                        <input type="text" name="email" />
                                     </div>
                                     <div class="group-val ct-gr">
-                                        <textarea name="message" placeholder="Message"></textarea>
+                                        <textarea name="content" placeholder="Message"></textarea>
                                     </div>
-                                    <a href="#" class="btn btn_animated" onclick="$('#blog-form').submit(); return false;"><span class="circle">Send Message</span></a>
+                                    <a id="submit" name="submit" type="submit" class="btn btn_animated"><span class="circle">Send Message</span></a>
                                 </div>
                             </div>
                         </form>
-                        <div class="alert-success">
-                            <p>Thanks, your message is sent successfully. We will contact you shortly!</p>
-                        </div>
 
                         <div class="col-md-12">
                             <h3 class="subtitle">Post Comments</h3>
@@ -92,6 +109,7 @@
                                 {% endif %}
                             </ul>
                         </div>
+                        -->
                     
                     </div>
 

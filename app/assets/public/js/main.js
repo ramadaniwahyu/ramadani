@@ -217,25 +217,25 @@ $(function () {
 	// });
 	
 	/* Validate contact form */
-	$("#blog-form").validate({
-		rules: {
-			name: {
-				required: true
-			},
-			message: {
-				required: true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-		success: "valid",
-		submitHandler: function() {
-			$('#blog-form').fadeOut();
-			$('.alert-success').delay(1000).fadeIn();
-		}
-	});
+	// $("#blog-form").validate({
+	// 	rules: {
+	// 		name: {
+	// 			required: true
+	// 		},
+	// 		message: {
+	// 			required: true
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		}
+	// 	},
+	// 	success: "valid",
+	// 	submitHandler: function() {
+	// 		$('#blog-form').fadeOut();
+	// 		$('.alert-success').delay(1000).fadeIn();
+	// 	}
+	// });
 
 });
 
