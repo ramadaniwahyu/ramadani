@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="{{ url_for('serveStaticResource', resource='public/css/ionicons.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('serveStaticResource', resource='public/css/magnific-popup.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('serveStaticResource', resource='public/css/animate.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
     {% block styles %}
     {% endblock styles %}
 </head>
@@ -62,6 +63,9 @@
     <script src="{{ url_for('serveStaticResource', resource='public/js/jquery.mb.YTPlayer.js') }}"></script>
     <script src="{{ url_for('serveStaticResource', resource='public/js/particles.js') }}"></script>
     <script src="{{ url_for('serveStaticResource', resource='public/js/typed.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
 
     <!-- Main Scripts -->
     <script src="{{ url_for('serveStaticResource', resource='public/js/main.js')}}"></script>
